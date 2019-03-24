@@ -1,0 +1,35 @@
+--- /tmp/ffmpeg-4.1/configure
++++ /tmp/ffmpeg-4.1-src/configure
+@@ -215,6 +215,7 @@
+   --enable-gnutls          enable gnutls, needed for https support
+                            if openssl, libtls or mbedtls is not used [no]
+   --disable-iconv          disable iconv [autodetect]
++  --enable-vfw             enable VFW(for lagarith) support [no]
+   --enable-jni             enable JNI support [no]
+   --enable-ladspa          enable LADSPA audio filtering [no]
+   --enable-libaom          enable AV1 video encoding/decoding via libaom [no]
+@@ -1761,6 +1762,7 @@
+     openal
+     opengl
+     vapoursynth
++	vfw
+ "
+ 
+ HWACCEL_AUTODETECT_LIBRARY_LIST="
+@@ -2668,6 +2670,7 @@
+ jpegls_decoder_select="mjpeg_decoder"
+ jv_decoder_select="blockdsp"
+ lagarith_decoder_select="llviddsp"
++lagarith_encoder_deps="vfw"
+ ljpeg_encoder_select="idctdsp jpegtables mpegvideoenc"
+ magicyuv_decoder_select="llviddsp"
+ magicyuv_encoder_select="llvidencdsp"
+@@ -6049,6 +6052,7 @@
+ # these are off by default, so fail if requested and not available
+ enabled cuda_sdk          && require cuda_sdk cuda.h cuCtxCreate -lcuda
+ enabled chromaprint       && require chromaprint chromaprint.h chromaprint_get_version -lchromaprint
++enabled vfw               && add_extralibs -lvfw32
+ enabled decklink          && { require_headers DeckLinkAPI.h &&
+                                { test_cpp_condition DeckLinkAPIVersion.h "BLACKMAGIC_DECKLINK_API_VERSION >= 0x0a090500" || die "ERROR: Decklink API version must be >= 10.9.5."; } }
+ enabled libndi_newtek     && require_headers Processing.NDI.Lib.h
+

@@ -1,0 +1,11 @@
+--- /tmp/ffmpeg-4.1/libavcodec/allcodecs.c
++++ /tmp/ffmpeg-4.1-src/libavcodec/allcodecs.c
+@@ -168,6 +168,7 @@
+ extern AVCodec ff_kgv1_decoder;
+ extern AVCodec ff_kmvc_decoder;
+ extern AVCodec ff_lagarith_decoder;
++extern AVCodec ff_lagarith_encoder;
+ extern AVCodec ff_ljpeg_encoder;
+ extern AVCodec ff_loco_decoder;
+ extern AVCodec ff_m101_decoder;
+
